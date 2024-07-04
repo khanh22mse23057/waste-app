@@ -17,12 +17,13 @@ class Categories extends StatelessWidget {
                   if (!snapshot.hasData) {
                     return Center(child: Text("Loading"));
                   }
+                  // ignore: null_aware_in_condition
                   return snapshot.data?.isEmpty
                       ? Center(child: Text('No Categories found'))
                       : Row(
                           children: snapshot.data?.map((category) {
                             return CategoryCard(category: category);
-                          }).toList(),
+                          })?.toList(),
                         );
                 }))
       ],

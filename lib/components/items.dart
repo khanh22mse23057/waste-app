@@ -21,6 +21,7 @@ class _ItemsState extends State<Items> {
               if (!snapshot.hasData) {
                 return Center(child: Text("Loading"));
               }
+              // ignore: null_aware_in_condition
               return snapshot.data?.isEmpty
                   ? Center(child: Text('No items found'))
                   : Column(
@@ -48,7 +49,7 @@ class _ItemsState extends State<Items> {
                                   ], //add it here
                                 ),
                                 child: ItemCard(item: item)));
-                      }).toList(),
+                      })?.toList(),
                     );
             }));
   }
